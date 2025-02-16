@@ -8,6 +8,8 @@ let selectTag = document.getElementById("voices");
 let vozPadrao = 1;
 let input = document.getElementById("input");
 
+input.focus();
+
 input.addEventListener("input", function () {
   this.value = this.value.replace(/[^0-9]/g, ""); // Remove qualquer caractere que não seja número
 });
