@@ -67,17 +67,15 @@ selectTag.addEventListener("change", function () {
 });
 
 function possibilitarLeitura(texto) {
-  window.speechSynthesis.cancel();
-  let i = 0;
-  if (!(voices.length > 0)) {
+  if (voices.length > 0) {
+    fazerLeitura(texto);
+  } else {
     const interval = setInterval(() => {
       if(voices.length > 0) {
         clearInterval(interval);
         fazerLeitura(texto); // Faz a leitura assim que as vozes estão disponíveis
       }
     }, 100);
-  } else {
-    fazerLeitura(texto);
   }
 }
 
@@ -118,6 +116,7 @@ exibirMensagemInicial();
 
 function verificarChute() {
   let chute = parseInt(document.querySelector("input").value);
+  window.speechSynthesis.cancel();
   if (chute === numeroSecreto) {
     exibirTextoNaTela("h1", "Acertou!");
     let mensagemTentativas = `Você descobriu o número secreto em ${tentativas} tentativa${
@@ -125,6 +124,7 @@ function verificarChute() {
     }!`;
     exibirTextoNaTela("p", mensagemTentativas);
     document.getElementById("reiniciar").removeAttribute("disabled");
+    document.getElementById("chute").setAttribute("disabled", true);
   } else {
     tentativas++;
     let mensagemDica = `O número secreto é ${
@@ -141,9 +141,27 @@ function limparCampo() {
 }
 
 function reiniciarJogo() {
+  console.log("foi")
+  window.speechSynthesis.cancel();
   numeroSecreto = gerarNumeroAleatorio(numeroMaximo);
   limparCampo();
   tentativas = 1;
   exibirMensagemInicial();
   document.getElementById("reiniciar").setAttribute("disabled", true);
+  document.getElementById("chute").removeAttribute("disabled");
 }
+
+document.addEventListener('keydown', function(event) {
+  let permitir = true;
+  if (event.key === 'Enter' || event.key === ' ') {
+      if(!document.getElementById("chute").disabled && permitir){
+        verificarChute();
+      } else {
+        permitir = false;
+      }
+      if(!document.getElementById("reiniciar").disabled && !permitir){
+        reiniciarJogo();
+        permitir = true;
+      } 
+  }
+});
