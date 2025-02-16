@@ -6,7 +6,6 @@ let informouVoz = false;
 let voices = [];
 let newVoices = [];
 let selectTag = document.getElementById("voices");
-let vozPadrao = 1;
 let input = document.getElementById("input");
 
 input.focus();
@@ -66,8 +65,6 @@ function definirVozSelecionada() {
     selectTag.value = vozSelecionada; // Define a voz selecionada
     return;
   }
-  selectTag.value = 1;
-  return;
 }
 
 esperarVoices();
