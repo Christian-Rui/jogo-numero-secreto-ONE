@@ -6,6 +6,11 @@ let informouVoz = false;
 let voices = [];
 let selectTag = document.getElementById("voices");
 let vozPadrao = 1;
+let input = document.getElementById("input");
+
+input.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, ""); // Remove qualquer caractere que não seja número
+});
 
 function gerarNumeroAleatorio(max) {
   let numeroEscolhido;
@@ -71,7 +76,7 @@ function possibilitarLeitura(texto) {
     fazerLeitura(texto);
   } else {
     const interval = setInterval(() => {
-      if(voices.length > 0) {
+      if (voices.length > 0) {
         clearInterval(interval);
         fazerLeitura(texto); // Faz a leitura assim que as vozes estão disponíveis
       }
@@ -116,22 +121,27 @@ exibirMensagemInicial();
 
 function verificarChute() {
   let chute = parseInt(document.querySelector("input").value);
+
   window.speechSynthesis.cancel();
-  if (chute === numeroSecreto) {
-    exibirTextoNaTela("h1", "Acertou!");
-    let mensagemTentativas = `Você descobriu o número secreto em ${tentativas} tentativa${
-      tentativas > 1 ? "s" : ""
-    }!`;
-    exibirTextoNaTela("p", mensagemTentativas);
-    document.getElementById("reiniciar").removeAttribute("disabled");
-    document.getElementById("chute").setAttribute("disabled", true);
+  if (!isNaN(chute)) {
+    if (chute === numeroSecreto) {
+      exibirTextoNaTela("h1", "Acertou!");
+      let mensagemTentativas = `Você descobriu o número secreto em ${tentativas} tentativa${
+        tentativas > 1 ? "s" : ""
+      }. Parabéns!`;
+      exibirTextoNaTela("p", mensagemTentativas);
+      document.getElementById("reiniciar").removeAttribute("disabled");
+      document.getElementById("chute").setAttribute("disabled", true);
+    } else {
+      tentativas++;
+      let mensagemDica = `O número secreto é ${
+        chute > numeroSecreto ? "menor" : "maior"
+      }`;
+      exibirTextoNaTela("p", mensagemDica);
+      limparCampo();
+    }
   } else {
-    tentativas++;
-    let mensagemDica = `O número secreto é ${
-      chute > numeroSecreto ? "menor" : "maior"
-    }`;
-    exibirTextoNaTela("p", mensagemDica);
-    limparCampo();
+    possibilitarLeitura("Você não colocou nenhum número");
   }
 }
 
@@ -150,17 +160,17 @@ function reiniciarJogo() {
   document.getElementById("chute").removeAttribute("disabled");
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener("keydown", function (event) {
   let permitir = true;
-  if (event.key === 'Enter' || event.key === ' ') {
-      if(!document.getElementById("chute").disabled && permitir){
-        verificarChute();
-      } else {
-        permitir = false;
-      }
-      if(!document.getElementById("reiniciar").disabled && !permitir){
-        reiniciarJogo();
-        permitir = true;
-      } 
+  if (event.key === "Enter" || event.key === " ") {
+    if (!document.getElementById("chute").disabled && permitir) {
+      verificarChute();
+    } else {
+      permitir = false;
+    }
+    if (!document.getElementById("reiniciar").disabled && !permitir) {
+      reiniciarJogo();
+      permitir = true;
+    }
   }
 });
