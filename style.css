@@ -11,6 +11,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -140,11 +142,11 @@ h2{
     background-color: #1763be;
     border: none;
 }
-footer {
+/* footer {
     position: fixed;
     bottom: 0;
     margin-bottom: 10px;
-}
+} */
 
 footer ul {
     display: flex;
@@ -197,3 +199,132 @@ footer ul li img{
     }
 }
 
+@media (orientation: landscape) and (max-width: 1024px) and (max-height: 500px) {
+    h1 {
+        font-size: 25px;
+        padding-bottom: 1rem;
+    }
+
+    .container {
+        margin-top: 20vh;
+        
+    }
+
+    .container__botao {
+        font-size: 10px;
+        margin-top: 1rem;
+        padding: 10px 16px;
+    }
+
+    .container__input {
+        height: 10px;
+        padding: 1.1rem;
+    }
+
+
+    .texto__paragrafo {
+        font-size: 14px;
+    }
+
+    .container__imagem-pessoa {
+        display: flex;
+        width: 35%;
+    }
+
+    .container__conteudo {
+        display: flex;
+    }
+
+    .container__informacoes {
+        padding: 1rem
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .voices{
+        width: 30vw; 
+        height: 18vh;  
+    }
+    
+    .voices__select{
+        font-size: 14px;
+        position: relative;
+    }
+
+    footer{
+        margin-block: 10px;
+        ul{
+            gap: 30px;
+            li img{
+                width: 40px;
+            }
+        }
+    }
+}
+
+@media (orientation: portrait) and (max-width: 679px){
+    h1 {
+        font-size: 35px;
+    }
+
+    .container {
+        margin-top: 10vh;
+    }
+
+    .container__botao {
+        font-size: 12px;
+    }
+
+    .container__input {
+        height: 30px;
+    }
+
+
+    .texto__paragrafo {
+        font-size: 22px;
+    }
+
+    .container__imagem-pessoa {
+        display: flex;
+        width: 125px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin-right: 40px;
+    }
+
+    .container__conteudo {
+        display: block;
+        position: inherit;
+    }
+
+    .container__informacoes {
+        padding: 1rem
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .voices{
+        width: 50vw; 
+        height: 12%;  
+    }
+    
+    .voices__select{
+        font-size: 14px;
+        position: relative;
+    }
+
+    footer{
+        margin-block: 10px;
+        ul{
+            gap: 30px;
+            li img{
+                width: 40px;
+            }
+        }
+    }
+}

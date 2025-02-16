@@ -4,6 +4,7 @@ let numeroSecreto = gerarNumeroAleatorio(numeroMaximo);
 let tentativas = 1;
 let informouVoz = false;
 let voices = [];
+let newVoices = [];
 let selectTag = document.getElementById("voices");
 let vozPadrao = 1;
 let input = document.getElementById("input");
@@ -33,10 +34,16 @@ function gerarNumeroAleatorio(max) {
 function criarOptionsVoices(voicesArray) {
   let novaOption;
   for (let i = 0; i < voicesArray.length; i++) {
-    novaOption = document.createElement("option");
-    novaOption.value = i;
-    novaOption.textContent = `${voicesArray[i].name}`;
-    selectTag.appendChild(novaOption);
+    if (
+      voicesArray[i].name.includes("Brazil") ||
+      voicesArray[i].name.includes("Brasil")
+    ) {
+      novaOption = document.createElement("option");
+      novaOption.value = i;
+      novaOption.textContent = `${voicesArray[i].name}`;
+      selectTag.appendChild(novaOption);
+      newVoices.push(voicesArray[i]);
+    }
   }
 }
 
@@ -92,7 +99,7 @@ function fazerLeitura(texto) {
     utterance.lang = "pt-BR";
     utterance.rate = 1.2;
     // Aqui você pode escolher a voz desejada
-    utterance.voice = voices[selectTag.value];
+    utterance.voice = newVoices[selectTag.value];
     if (!informouVoz) {
       console.log(`Voz escolhida para leitura foi: ${voices[0].name}`);
       informouVoz = true;
