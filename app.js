@@ -141,7 +141,6 @@ function limparCampo() {
 }
 
 function reiniciarJogo() {
-  console.log("foi")
   window.speechSynthesis.cancel();
   numeroSecreto = gerarNumeroAleatorio(numeroMaximo);
   limparCampo();
