@@ -27,7 +27,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 ## 📁 Acesso ao projeto
 
-Você pode [baixar o arquivo zip]().
+Você pode [baixar o arquivo zip](https://github.com/Christian-Rui/jogo-numero-secreto-ONE/archive/refs/heads/main.zip).
 
 ## 🛠️ Abrir e rodar o projeto
 
