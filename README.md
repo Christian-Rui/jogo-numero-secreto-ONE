@@ -1,4 +1,4 @@
-![Descricao da sua imagem](https://repository-images.githubusercontent.com/768217367/3f5266ef-6e63-478a-a18f-f9f4ba280759)
+![Descricao da sua imagem](https://repository-images.githubusercontent.com/933596636/9b8ae1f4-f062-4c75-9f88-a538be0bb622)
 
 # Jogo do Número Secreto
 
@@ -27,7 +27,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 ## 📁 Acesso ao projeto
 
-Você pode [baixar o arquivo zip]().
+Você pode [baixar o arquivo zip](https://github.com/Christian-Rui/jogo-numero-secreto-ONE/archive/refs/heads/main.zip).
 
 ## 🛠️ Abrir e rodar o projeto
 
