@@ -209,6 +209,7 @@ footer ul li img{
     h1 {
         font-size: 25px;
         padding-bottom: 1rem;
+        width: 40%;
     }
 
     .container {
@@ -272,6 +273,7 @@ footer ul li img{
 @media (orientation: portrait) and (max-width: 679px){
     h1 {
         font-size: 35px;
+        width: 50%;
     }
 
     .container {
