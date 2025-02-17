@@ -152,6 +152,7 @@ h2{
 
 footer{
     margin-block: 15px;
+    z-index: 1;
 }
 
 footer ul {
@@ -209,7 +210,6 @@ footer ul li img{
     h1 {
         font-size: 25px;
         padding-bottom: 1rem;
-        width: 40%;
     }
 
     .container {
@@ -272,12 +272,13 @@ footer ul li img{
 
 @media (orientation: portrait) and (max-width: 679px){
     h1 {
-        font-size: 35px;
-        width: 50%;
+        font-size: 30px;
     }
 
     .container {
         margin-top: 10vh;
+        justify-content: center;
+        align-items: center;
     }
 
     .container__botao {
@@ -294,18 +295,9 @@ footer ul li img{
         font-size: 22px;
     }
 
-    .container__imagem-pessoa {
-        display: flex;
-        width: 125px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: 30px;
-    }
-
     .container__conteudo {
-        display: block;
-        position: inherit;
+        display: flex;
+        
     }
 
     .container__informacoes {
@@ -317,8 +309,8 @@ footer ul li img{
         margin-bottom: 6px;
     }
     .voices{
-        width: 50vw; 
-        height: 15%;  
+        width: 65vw;
+        height: 70px;
     }
     
     .voices__select{
